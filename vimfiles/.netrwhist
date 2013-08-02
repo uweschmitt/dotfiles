@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/uschmitt/develop/autowrap/tests/test_files/addons'
+let g:netrw_dirhist_2='/home/uschmitt/Release1.10pyopenms_built/pyOpenMS/tests/unittests'
+let g:netrw_dirhist_3='/home/uschmitt/Release1.10pyopenms_built/pyOpenMS/pxds'
+let g:netrw_dirhist_4='/vm'
+let g:netrw_dirhist_5='/home/uschmitt/virtualenvs/emzed/lib/python2.7/site-packages/spyderplugins/widgets'
+let g:netrw_dirhist_6='/home/uschmitt/OpenMS/contrib/src/libsvm-2.91'
+let g:netrw_dirhist_7='/home/uschmitt/emzed2/test_app_store'
+let g:netrw_dirhist_8='/home/uschmitt/emzed2/tmp/tmp.hBzSMVjG5O'
