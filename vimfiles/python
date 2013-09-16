@@ -84,7 +84,11 @@ def SetBreakpoint():
         if strLine == "import pdb":
             break
     else:
-        vim.current.buffer.append( 'import pdb', 0)
+        latest_i = Non
+        for (i, strLine) in enumerate(vim.current_buffer):
+            if strLine.startswith("from __future__"):
+                latest_i = i
+        vim.current.buffer.append( 'import pdb', latest_i or 0)
         vim.command( 'normal j1')
 
 vim.command( 'map <f7> :py SetBreakpoint()<cr>')

@@ -76,18 +76,18 @@ cmap W! w !sudo tee % >/dev/null
 " Toggle the tasklist
 map <leader>td <Plug>TaskList
 
-map <leader>w :w<CR>
+map <leader>w :w<CR>:GoldenRatioResize<CR><CR>
 
 " Run pep8
 let g:pep8_map='<leader>8'
 
 " run py.test's
-"nmap <silent><Leader>tf <Esc>:Pytest file<CR>
+nmap <silent><Leader>tf <Esc>:Pytest file<CR>
 "nmap <silent><Leader>tc <Esc>:Pytest class<CR>
 "nmap <silent><Leader>tm <Esc>:Pytest method<CR>
-"nmap <silent><Leader>tn <Esc>:Pytest next<CR>
-"nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
-"nmap <silent><Leader>te <Esc>:Pytest error<CR>
+nmap <silent><Leader>tn <Esc>:Pytest next<CR>
+nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
+nmap <silent><Leader>te <Esc>:Pytest error<CR>
 
 " Run django tests
 "map <leader>dt :set makeprg=python\ manage.py\ test\|:call MakeGreen()<CR>
@@ -118,7 +118,8 @@ map <leader>n :NERDTreeToggle<CR>
 " Run command-t file search
 "map <leader>f :CommandT<CR>
 " Ack searching
-"nmap <leader>a <Esc>:Ack!
+"
+nmap <leader>a <Esc>:Ack!
 
 " Load the Gundo window
 map <leader>g :GundoToggle<CR>
@@ -143,7 +144,7 @@ filetype on                   " try to detect filetypes
 filetype plugin indent on     " enable loading indent file for filetype
 set number                    " Display line numbers
 set numberwidth=1             " using only 1 column (and 1 space) while possible
-set background=dark           " We are using dark background in vim
+set background=light          " We are using dark background in vim
 set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
@@ -157,11 +158,12 @@ set wildignore+=*.o,*.obj,.git,*.pyc
 set wildignore+=eggs/**
 set wildignore+=*.egg-info/**
 
-"set grepprg=ack         " replace the default grep program with ack
+set grepprg=ack         " replace the default grep program with ack
 
 
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
+
 
 " Disable the colorcolumn when switching modes.  Make sure this is the
 " first autocmd for the filetype here
@@ -192,6 +194,7 @@ set expandtab               " Use spaces, not tabs, for autoindent/tab key.
 set shiftround              " rounds indent to a multiple of shiftwidth
 set matchpairs+=<:>         " show matching <> (html mainly) as well
 set foldmethod=indent       " allow us to fold on indents
+set foldmethod=manual       " allow us to fold on indents
 set foldlevel=2             " don't fold by default
 
 " don't outdent hashes
@@ -241,11 +244,18 @@ if has("gui_running")
     set guioptions-=T
     set guifont=Source\ Code\ Pro\ Semi-Bold\ 9
 else
-    colorscheme torte
+    colorscheme solarized
+    set t_Co=16
 endif
 
 " Paste from clipboard
 map <leader>p "+p
+map <leader>P "+P
+
+" yank to clipboard
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+y
+
 
 " Quit window on <leader>q
 nnoremap <leader>q :q<CR>
@@ -281,10 +291,45 @@ nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 "au BufRead *.py compiler nose
 au FileType python set omnifunc=pythoncomplete#Complete complete=.,w,t,b,u      " no include !
 au FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+" au FileType python map <buffer> <F3> :call Flake8()<CR>
+" au BufWritePost *.py call Flake8()
+
+" let g:flake8_max_line_length=99
+
 " au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+
 " Don't let pyflakes use the quickfix window
-let g:pyflakes_use_quickfix = 0
+" let g:pyflakes_use_quickfix = 0
+"
+let g:PyFlakeCheckers = 'pep8, mccabe,pyflakes'
+let g:PyFlakeMaxLineLength = 100
+
+" vundle
+"
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'wakatime/vim-wakatime'
+
+" close quickfix if it is the last window
+au BufEnter * call MyLastWindow()
+" au BufEnter * call CloseQuickFix()
+
+function! MyLastWindow()
+    if &buftype=="quickfix"
+        if winbufnr(2) == -1
+            quit!
+        endif
+    endif
+endfunction
+
+function! CloseQuickFix()
+    if &buftype!="quickfix"
+        cclose
+    endif
+endfunction
+
 
 
 
@@ -320,4 +365,10 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 nnoremap <space> za
 vnoremap <space> zf
+" move selected lines
+vmap K :m-2<CR>gv
+vmap J :m'>+<CR>gv
+
+
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
