@@ -84,11 +84,11 @@ def SetBreakpoint():
         if strLine == "import pdb":
             break
     else:
-        latest_i = Non
-        for (i, strLine) in enumerate(vim.current_buffer):
+        latest_i = 0
+        for (i, strLine) in enumerate(vim.current.buffer):
             if strLine.startswith("from __future__"):
                 latest_i = i
-        vim.current.buffer.append( 'import pdb', latest_i or 0)
+        vim.current.buffer.append( 'import pdb', latest_i)
         vim.command( 'normal j1')
 
 vim.command( 'map <f7> :py SetBreakpoint()<cr>')
@@ -119,4 +119,5 @@ vim.command( "map <s-f7> :py RemoveBreakpoints()<cr>")
 vim.command( "map <f8> :py RemoveBreakpoints()<cr>")
 EOF
 set colorcolumn=99
+EnableGoldenViewAutoResize
 "vim:syntax=vim

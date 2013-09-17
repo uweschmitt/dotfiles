@@ -76,7 +76,7 @@ cmap W! w !sudo tee % >/dev/null
 " Toggle the tasklist
 map <leader>td <Plug>TaskList
 
-map <leader>w :w<CR>:GoldenRatioResize<CR><CR>
+map <leader>w :w<CR>
 
 " Run pep8
 let g:pep8_map='<leader>8'
@@ -144,7 +144,7 @@ filetype on                   " try to detect filetypes
 filetype plugin indent on     " enable loading indent file for filetype
 set number                    " Display line numbers
 set numberwidth=1             " using only 1 column (and 1 space) while possible
-set background=light          " We are using dark background in vim
+set background=light           " We are using dark background in vim
 set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
@@ -259,6 +259,7 @@ nnoremap <leader>Y "+y
 
 " Quit window on <leader>q
 nnoremap <leader>q :q<CR>
+nnoremap <leader>qq :qall<CR>
 
 " hide matches on <leader>space
 nnoremap <leader><space> :nohlsearch<cr>
@@ -291,8 +292,14 @@ nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 "au BufRead *.py compiler nose
 au FileType python set omnifunc=pythoncomplete#Complete complete=.,w,t,b,u      " no include !
 au FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+
 " au FileType python map <buffer> <F3> :call Flake8()<CR>
 " au BufWritePost *.py call Flake8()
+"
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Show_One_File=1
+nnoremap <silent> <f9> :TlistToggle<CR>
+
 
 " let g:flake8_max_line_length=99
 
@@ -307,14 +314,20 @@ let g:PyFlakeMaxLineLength = 100
 
 " vundle
 "
+"
+"
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
+
 Bundle 'wakatime/vim-wakatime'
+Bundle 'zhaocai/Goldenview.vim'
+
+" au BufEnter * EnableGoldenViewAutoResize
 
 " close quickfix if it is the last window
 au BufEnter * call MyLastWindow()
-" au BufEnter * call CloseQuickFix()
+
 
 function! MyLastWindow()
     if &buftype=="quickfix"
@@ -330,6 +343,8 @@ function! CloseQuickFix()
     endif
 endfunction
 
+map <C-y> <Esc>:'<,'>!cat \| tee /tmp/vimbuff<CR>
+map <C-p> o<ESC>:.!cat /tmp/vimbuff<CR>
 
 
 
