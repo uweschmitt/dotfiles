@@ -82,12 +82,12 @@ map <leader>w :w<CR>
 let g:pep8_map='<leader>8'
 
 " run py.test's
-nmap <silent><Leader>tf <Esc>:Pytest file<CR>
+"nmap <silent><Leader>tf <Esc>:Pytest file<CR>
 "nmap <silent><Leader>tc <Esc>:Pytest class<CR>
 "nmap <silent><Leader>tm <Esc>:Pytest method<CR>
-nmap <silent><Leader>tn <Esc>:Pytest next<CR>
-nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
-nmap <silent><Leader>te <Esc>:Pytest error<CR>
+"nmap <silent><Leader>tn <Esc>:Pytest next<CR>
+"nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
+"nmap <silent><Leader>te <Esc>:Pytest error<CR>
 
 " Run django tests
 "map <leader>dt :set makeprg=python\ manage.py\ test\|:call MakeGreen()<CR>
@@ -98,6 +98,9 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " open/close the quickfix window
 nmap <leader>c :copen<CR>
 nmap <leader>cc :cclose<CR>
+nmap <leader>c1 :cc 1<CR>
+nmap <leader>cn :cnext<CR>
+nmap <leader>cp :cprev<CR>
 
 " for when we forget to use sudo to open/edit a file
 cmap w!! w !sudo tee % >/dev/null
@@ -242,10 +245,10 @@ if has("gui_running")
 
     " Remove toolbar
     set guioptions-=T
-    set guifont=Source\ Code\ Pro\ Semi-Bold\ 9
+    set guifont=Source\ Code\ Pro\ 9
 else
-    colorscheme solarized
-    set t_Co=16
+    " colorscheme solarized
+    " set t_Co=16
 endif
 
 " Paste from clipboard
@@ -320,8 +323,9 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 
-Bundle 'wakatime/vim-wakatime'
+" Bundle 'wakatime/vim-wakatime'
 Bundle 'zhaocai/Goldenview.vim'
+Bundle 'andviro/flake8-vim'
 
 " au BufEnter * EnableGoldenViewAutoResize
 
