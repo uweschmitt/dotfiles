@@ -1,8 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/uschmitt/dotfiles/vimfiles/bundle/pytest/ftplugin'
-let g:netrw_dirhist_2='/home/uschmitt/dotfiles/vimfiles/bundle/pyflakes/ftplugin/python/pyflakes'
-let g:netrw_dirhist_3='/home/uschmitt/emzed2/src/tests'
-let g:netrw_dirhist_4='/home/uschmitt/emzed2/src/emzed/utils'
-let g:netrw_dirhist_5='/home/uschmitt/emzed2/lib/python2.7/site-packages/guiqwt-2.3.1-py2.7-linux-x86_64.egg'
-let g:netrw_dirhist_6='/home/uschmitt/dotfiles/vimfiles/bundle'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/uweschmitt/Projects/ppCheck/src/de/mineway/ppcheck/kontroll_app'
+let g:netrw_dirhist_2='/Users/uweschmitt/Projects/ppCheck/src/de/mineway/ppcheck/tests/ondb'
+let g:netrw_dirhist_3='/Users/uweschmitt/dotfiles/vimfiles/bundle/GoldenView.Vim'
+let g:netrw_dirhist_4='/Users/uweschmitt/dotfiles/vimfiles/bundle_inaktiv/syntastic'

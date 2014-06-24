@@ -119,5 +119,4 @@ vim.command( "map <s-f7> :py RemoveBreakpoints()<cr>")
 vim.command( "map <f8> :py RemoveBreakpoints()<cr>")
 EOF
 set colorcolumn=99
-EnableGoldenViewAutoResize
 "vim:syntax=vim

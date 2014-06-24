@@ -82,12 +82,12 @@ map <leader>w :w<CR>
 let g:pep8_map='<leader>8'
 
 " run py.test's
-"nmap <silent><Leader>tf <Esc>:Pytest file<CR>
-"nmap <silent><Leader>tc <Esc>:Pytest class<CR>
-"nmap <silent><Leader>tm <Esc>:Pytest method<CR>
-"nmap <silent><Leader>tn <Esc>:Pytest next<CR>
-"nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
-"nmap <silent><Leader>te <Esc>:Pytest error<CR>
+nmap <silent><Leader>tf <Esc>:Pytest file verbose<CR>
+nmap <silent><Leader>tc <Esc>:Pytest class verbose<CR>
+nmap <silent><Leader>tm <Esc>:Pytest method verbose<CR>
+nmap <silent><Leader>tn <Esc>:Pytest next verbose<CR>
+nmap <silent><Leader>tp <Esc>:Pytest previous verbose<CR>
+nmap <silent><Leader>te <Esc>:Pytest error verbose<CR>
 
 " Run django tests
 "map <leader>dt :set makeprg=python\ manage.py\ test\|:call MakeGreen()<CR>
@@ -239,6 +239,10 @@ set incsearch               " Incrementally search while typing a /regex
 
 """" Display
 if has("gui_running")
+    " let g:solarized_termtrans=1
+    " let g:solarized_termcolors=256
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
     colorscheme solarized
     " Remove menu bar
     " set guioptions-=m
@@ -247,8 +251,11 @@ if has("gui_running")
     set guioptions-=T
     set guifont=Source\ Code\ Pro\ 9
 else
-    " colorscheme solarized
-    " set t_Co=16
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
+    let g:solarized_termtrans = 1
+    colorscheme solarized
+    set t_Co=16
 endif
 
 " Paste from clipboard
@@ -273,8 +280,8 @@ nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 " Select the item in the list with enter
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" ==========================================================
 " Javascript
+" ==========================================================
 " ==========================================================
 " au BufRead *.js set makeprg=jslint\ %
 
@@ -312,7 +319,7 @@ au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\
 " Don't let pyflakes use the quickfix window
 " let g:pyflakes_use_quickfix = 0
 "
-let g:PyFlakeCheckers = 'pep8, mccabe,pyflakes'
+let g:PyFlakeCheckers = 'pep8,mccabe,frosted'
 let g:PyFlakeMaxLineLength = 100
 
 " vundle
@@ -324,8 +331,8 @@ call vundle#rc()
 
 
 " Bundle 'wakatime/vim-wakatime'
-Bundle 'zhaocai/Goldenview.vim'
-Bundle 'andviro/flake8-vim'
+" Bundle 'zhaocai/Goldenview.vim'
+" Bundle 'andviro/flake8-vim'
 
 " au BufEnter * EnableGoldenViewAutoResize
 
@@ -391,3 +398,7 @@ vmap J :m'>+<CR>gv
 
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
+set scroll=1
+
+vmap <C-x> :!pbcopy<CR>  
+vmap <C-c> :w !pbcopy<CR><CR> 

@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/uweschmitt/Projects/OpenMS_Build/CMakeFiles'
+let g:netrw_dirhist_2='/Users/uweschmitt/data/dose/08_20100910205136617-50547'
+let g:netrw_dirhist_3='/Users/uweschmitt/Projects/OpenMS/src/pyOpenMS/converters'
+let g:netrw_dirhist_4='/Users/uweschmitt/Projects/eawag_workflows/eawag_components/src/eawag_components/r_functions'
+let g:netrw_dirhist_5='/Users/uweschmitt/Projects/emzed2/src/emzed/core/r_connect'
