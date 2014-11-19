@@ -1,0 +1,3 @@
+[submodule "vimfiles/bundle/py.test"]
+	path = vimfiles/bundle/py.test
+	url = https://github.com/alfredodeza/pytest.vim
