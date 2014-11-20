@@ -383,7 +383,7 @@ set colorcolumn=99
 
 if !exists("autocommands_loaded")
   let autocommands_loaded = 1
-  autocmd BufRead,BufNewFile,FileReadPost *.py source ~/.vim/python
+  autocmd BufRead,BufNewFile,FileReadPost *.py source ~/.vim/python.vim
 endif
 
 " This beauty remembers where you were the last time you edited the file, and returns to the same position.
@@ -397,8 +397,6 @@ vmap J :m'>+<CR>gv
 
 
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
-set scroll=1
 
 vmap <C-x> :!pbcopy<CR>  
 vmap <C-c> :w !pbcopy<CR><CR> 
