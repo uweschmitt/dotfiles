@@ -65,7 +65,9 @@ def EvaluateCurrentRange():
     eval(compile('\n'.join(vim.current.range),'','exec'),globals())
 EOL
 " map <C-h> :py EvaluateCurrentRange()
-
+"
+"
+ 
 " Use F7/Shift-F7 to add/remove a breakpoint (pdb.set_trace)
 " Totally cool.
 python << EOF
@@ -78,7 +80,7 @@ def SetBreakpoint():
 
     vim.current.buffer.append(
        "%(space)spdb.set_trace() %(mark)s Breakpoint %(mark)s" %
-         {'space':strWhite, 'mark': '#' * 30}, nLine - 1)
+         {'space':strWhite, 'mark': ' ' + '#' * 30}, nLine - 1)
 
     for strLine in vim.current.buffer:
         if strLine == "import pdb":
@@ -126,3 +128,4 @@ vim.command( "map <f8> :py RemoveBreakpoints()<cr>")
 EOF
 set colorcolumn=99
 "vim:syntax=vim
+"
