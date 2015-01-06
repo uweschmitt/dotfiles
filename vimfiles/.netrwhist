@@ -1,6 +1,6 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/uweschmitt/Projects/ppCheck/src/de/mineway/ppcheck/kontroll_app'
-let g:netrw_dirhist_2='/Users/uweschmitt/Projects/ppCheck/src/de/mineway/ppcheck/tests/ondb'
-let g:netrw_dirhist_3='/Users/uweschmitt/dotfiles/vimfiles/bundle/GoldenView.Vim'
-let g:netrw_dirhist_4='/Users/uweschmitt/dotfiles/vimfiles/bundle_inaktiv/syntastic'
+let g:netrw_dirhist_1='/Users/uweschmitt/Projects/envimass/R'
+let g:netrw_dirhist_2='/private/tmp/x/inputs'
+let g:netrw_dirhist_3='/private/tmp/x'
+let g:netrw_dirhist_4='/Users/uweschmitt/Projects/sis-site-fork/src/services'

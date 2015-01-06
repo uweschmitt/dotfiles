@@ -25,8 +25,6 @@
 "
 " Snipmate
 "     Configurable snippets to avoid re-typing common comands
-"
-" PyFlakes
 "     Underlines and displays errors with Python on-the-fly
 "
 " Fugitive
@@ -359,20 +357,6 @@ map <C-p> o<ESC>:.!cat /tmp/vimbuff<CR>
 
 
 
-" Add the virtualenv's site-packages to vim path
-if has('python')
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-endif
-
 " Load up virtualenv's vimrc if it exists
 if filereadable($VIRTUAL_ENV . '/.vimrc')
     source $VIRTUAL_ENV/.vimrc
@@ -387,6 +371,20 @@ if !exists("autocommands_loaded")
 endif
 
 " This beauty remembers where you were the last time you edited the file, and returns to the same position.
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+nnoremap <space> za
+vnoremap <space> zf
+" move selected lines
+vmap K :m-2<CR>gv
+vmap J :m'>+<CR>gv
+
+
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+vmap <C-x> :!pbcopy<CR>  
+vmap <C-c> :w !pbcopy<CR><CR> 
+" you edited the file, and returns to the same position.
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 nnoremap <space> za
