@@ -1,6 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/uweschmitt/Projects/envimass/R'
-let g:netrw_dirhist_2='/private/tmp/x/inputs'
-let g:netrw_dirhist_3='/private/tmp/x'
-let g:netrw_dirhist_4='/Users/uweschmitt/Projects/sis-site-fork/src/services'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/uweschmitt/Projects/analysis_afm_masha/src/local_maxima'
+let g:netrw_dirhist_2='/Users/uweschmitt/Projects/emzed2/src/emzed/core/chemistry'

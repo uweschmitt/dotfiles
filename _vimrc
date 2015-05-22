@@ -126,10 +126,14 @@ nmap <leader>a <Esc>:Ack!
 map <leader>g :GundoToggle<CR>
 
 " Jump to the definition of whatever the cursor is on
-"map <leader>j :RopeGotoDefinition<CR>
+"
+" current rope installation is broken !
+"
+" map <leader>j :RopeGotoDefinition<CR>
 
 " Rename whatever the cursor is on (including references to it)
-"map <leader>r :RopeRename<CR>
+" map <leader>r :RopeRename<CR>
+
 " ==========================================================
 " Pathogen - Allows us to organize our vim plugins
 " ==========================================================
@@ -145,7 +149,7 @@ filetype on                   " try to detect filetypes
 filetype plugin indent on     " enable loading indent file for filetype
 set number                    " Display line numbers
 set numberwidth=1             " using only 1 column (and 1 space) while possible
-set background=light           " We are using dark background in vim
+set background=dark           " We are using dark background in vim
 set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
@@ -320,6 +324,10 @@ au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\
 let g:PyFlakeCheckers = 'pep8,mccabe,frosted'
 let g:PyFlakeMaxLineLength = 100
 
+nmap <Leader>pa :PyFlakeAuto<CR>
+
+
+
 " vundle
 "
 "
@@ -371,20 +379,6 @@ if !exists("autocommands_loaded")
 endif
 
 " This beauty remembers where you were the last time you edited the file, and returns to the same position.
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
-nnoremap <space> za
-vnoremap <space> zf
-" move selected lines
-vmap K :m-2<CR>gv
-vmap J :m'>+<CR>gv
-
-
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
-vmap <C-x> :!pbcopy<CR>  
-vmap <C-c> :w !pbcopy<CR><CR> 
-" you edited the file, and returns to the same position.
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 nnoremap <space> za
