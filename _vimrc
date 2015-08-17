@@ -251,7 +251,7 @@ if has("gui_running")
 
     " Remove toolbar
     set guioptions-=T
-    set guifont=Source\ Code\ Pro\ 9
+    set guifont=Sauce_Code\ Powerline:h12
 else
     let g:solarized_contrast="high"
     let g:solarized_visibility="high"
@@ -339,6 +339,8 @@ call vundle#rc()
 " Bundle 'wakatime/vim-wakatime'
 " Bundle 'zhaocai/Goldenview.vim'
 " Bundle 'andviro/flake8-vim'
+"
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " au BufEnter * EnableGoldenViewAutoResize
 
@@ -392,3 +394,6 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 vmap <C-x> :!pbcopy<CR>  
 vmap <C-c> :w !pbcopy<CR><CR> 
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'

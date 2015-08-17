@@ -1,4 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/uweschmitt/Projects/analysis_afm_masha/src/local_maxima'
-let g:netrw_dirhist_2='/Users/uweschmitt/Projects/emzed2/src/emzed/core/chemistry'
+let g:netrw_dirhist_cnt =0
