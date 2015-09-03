@@ -397,3 +397,5 @@ vmap <C-c> :w !pbcopy<CR><CR>
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+
+let g:jedi#popup_on_dot=0
